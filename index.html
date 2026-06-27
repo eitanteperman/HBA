@@ -1,0 +1,940 @@
+<!doctype html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hipotecas Buenos Aires | Préstamos hipotecarios privados en CABA y Zona Norte</title>
+  <meta name="description" content="Préstamos con garantía hipotecaria no bancarios en Capital Federal y Zona Norte de Buenos Aires. Tasas bajas, mínima burocracia y fondos para cualquier destino.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Hipotecas Buenos Aires | Préstamos hipotecarios privados">
+  <meta property="og:description" content="Capital privado con garantía hipotecaria. Tasas bajas, mínima burocracia, cualquier destino. CABA y Zona Norte.">
+  <meta property="og:locale" content="es_AR">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Lora:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Lora', 'Georgia', 'serif'],
+            display: ['Cormorant Garamond', 'Georgia', 'serif'],
+          },
+          boxShadow: {
+            card: '0 1px 3px rgba(119,136,115,0.08), 0 8px 24px rgba(119,136,115,0.06)',
+            'card-hover': '0 4px 16px rgba(119,136,115,0.16), 0 16px 40px rgba(119,136,115,0.10)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+  <style>
+    html { scroll-padding-top: 80px; }
+    [x-cloak] { display: none !important; }
+  </style>
+</head>
+<body class="font-sans text-slate-900 bg-[#F5F2ED] antialiased">
+
+  <!-- ===== HEADER ===== -->
+  <header
+    x-data="{ open: false, scrolled: false }"
+    @scroll.window="scrolled = window.scrollY > 24"
+    :class="scrolled ? 'bg-white/95 backdrop-blur-md shadow-sm' : 'bg-transparent'"
+    class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+
+        <!-- Logo -->
+        <a href="#inicio" class="flex items-center gap-3 flex-shrink-0">
+          <div class="h-10 px-3 rounded-xl bg-[#778873] flex items-center justify-center shadow-md">
+            <svg class="h-6 w-auto" viewBox="0 0 52 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <line x1="4" y1="3" x2="4" y2="33" stroke="white" stroke-width="4" stroke-linecap="round"/>
+              <line x1="4" y1="18" x2="26" y2="18" stroke="white" stroke-width="4" stroke-linecap="round"/>
+              <line x1="26" y1="3" x2="26" y2="33" stroke="white" stroke-width="4" stroke-linecap="round"/>
+              <path d="M26 3 C37 3 44 8 44 13 C44 18 37 18 26 18" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              <path d="M26 18 C39 18 47 24 47 28.5 C47 33 39 33 26 33" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            </svg>
+          </div>
+          <span class="font-display font-bold text-lg transition-colors" :class="scrolled || open ? 'text-slate-900' : 'text-white'">
+            Hipotecas Buenos Aires
+          </span>
+        </a>
+
+        <!-- Desktop Nav -->
+        <nav class="hidden lg:flex items-center gap-8">
+          <a href="#como-funciona" :class="scrolled ? 'text-slate-600' : 'text-white/80'" class="text-sm font-medium hover:text-[#778873] transition-colors">Cómo Funciona</a>
+          <a href="#requisitos"    :class="scrolled ? 'text-slate-600' : 'text-white/80'" class="text-sm font-medium hover:text-[#778873] transition-colors">Requisitos</a>
+          <a href="#inversores"    :class="scrolled ? 'text-slate-600' : 'text-white/80'" class="text-sm font-medium hover:text-[#778873] transition-colors">Inversores</a>
+          <a href="#faq"           :class="scrolled ? 'text-slate-600' : 'text-white/80'" class="text-sm font-medium hover:text-[#778873] transition-colors">Preguntas</a>
+          <a href="#contacto"      :class="scrolled ? 'text-slate-600' : 'text-white/80'" class="text-sm font-medium hover:text-[#778873] transition-colors">Contacto</a>
+        </nav>
+
+        <!-- Desktop CTAs -->
+        <div class="hidden lg:flex items-center gap-3">
+          <a href="https://wa.me/549XXXXXXXXXX" target="_blank" rel="noopener"
+             class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#25D366] text-white text-sm font-semibold hover:bg-[#1ebe5a] transition-colors shadow-sm">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            WhatsApp
+          </a>
+          <a href="#consultar" class="px-5 py-2 rounded-xl bg-[#778873] text-white text-sm font-bold hover:bg-[#5C6A57] transition-colors shadow-sm">
+            Solicitar préstamo
+          </a>
+        </div>
+
+        <!-- Hamburger -->
+        <button @click="open = !open"
+                :class="scrolled || open ? 'text-slate-700' : 'text-white'"
+                class="lg:hidden p-2 rounded-lg hover:bg-white/10 transition-colors"
+                aria-label="Abrir menú" :aria-expanded="open">
+          <svg x-show="!open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+          <svg x-show="open" x-cloak class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div x-show="open" x-cloak
+         x-transition:enter="transition ease-out duration-200"
+         x-transition:enter-start="opacity-0 -translate-y-2"
+         x-transition:enter-end="opacity-100 translate-y-0"
+         x-transition:leave="transition ease-in duration-150"
+         x-transition:leave-start="opacity-100 translate-y-0"
+         x-transition:leave-end="opacity-0 -translate-y-2"
+         @click.outside="open = false"
+         class="lg:hidden bg-white border-t border-slate-100 shadow-lg">
+      <nav class="max-w-7xl mx-auto px-4 py-6 flex flex-col gap-1">
+        <a href="#como-funciona" @click="open = false" class="text-slate-700 font-medium py-3 px-3 rounded-lg hover:bg-[#EDE9E3] hover:text-[#778873] transition-colors">Cómo Funciona</a>
+        <a href="#requisitos"    @click="open = false" class="text-slate-700 font-medium py-3 px-3 rounded-lg hover:bg-[#EDE9E3] hover:text-[#778873] transition-colors">Requisitos</a>
+        <a href="#inversores"    @click="open = false" class="text-slate-700 font-medium py-3 px-3 rounded-lg hover:bg-[#EDE9E3] hover:text-[#778873] transition-colors">Inversores</a>
+        <a href="#faq"           @click="open = false" class="text-slate-700 font-medium py-3 px-3 rounded-lg hover:bg-[#EDE9E3] hover:text-[#778873] transition-colors">Preguntas Frecuentes</a>
+        <a href="#contacto"      @click="open = false" class="text-slate-700 font-medium py-3 px-3 rounded-lg hover:bg-[#EDE9E3] hover:text-[#778873] transition-colors">Contacto</a>
+        <div class="pt-3 mt-2 flex flex-col gap-3 border-t border-slate-100">
+          <a href="https://wa.me/549XXXXXXXXXX" target="_blank" rel="noopener"
+             class="flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-[#25D366] text-white font-semibold">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            WhatsApp
+          </a>
+          <a href="#consultar" @click="open = false"
+             class="text-center py-3 px-4 rounded-xl bg-[#778873] text-white font-bold">
+            Solicitar préstamo
+          </a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ===== HERO ===== -->
+    <section id="inicio" class="relative min-h-screen bg-gradient-to-br from-[#1A1F19] via-[#2B3428] to-[#3A4A37] pt-20 pb-16 flex items-center overflow-hidden">
+
+      <!-- Subtle grid -->
+      <div class="absolute inset-0 opacity-[0.06]" style="background-image:linear-gradient(rgba(255,255,255,1) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,1) 1px,transparent 1px);background-size:60px 60px;" aria-hidden="true"></div>
+      <!-- Glow blobs -->
+      <div class="absolute top-1/3 left-1/4 w-96 h-96 rounded-full bg-[#778873]/25 blur-3xl pointer-events-none" aria-hidden="true"></div>
+      <div class="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full bg-[#9BAD97]/15 blur-3xl pointer-events-none" aria-hidden="true"></div>
+
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+
+          <!-- Left: Copy -->
+          <div class="text-white">
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/20 text-xs font-semibold uppercase tracking-widest text-[#C5D9C0] mb-6">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#9FBFA0] animate-pulse" aria-hidden="true"></span>
+              CABA y Zona Norte de Buenos Aires
+            </div>
+
+            <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+              Préstamos hipotecarios
+              <span class="block text-transparent bg-clip-text bg-gradient-to-r from-[#B8D4B0] to-[#E5D498]">
+                sin banco, sin vueltas
+              </span>
+            </h1>
+
+            <p class="text-lg sm:text-xl text-[#C8D8C5] mb-8 max-w-lg leading-relaxed">
+              Capital privado con garantía hipotecaria. Tasas más bajas que los bancos, mínima burocracia y fondos para cualquier destino.
+            </p>
+
+            <div class="flex flex-wrap gap-3 mb-10">
+              <span class="px-4 py-2 rounded-full bg-white/10 border border-white/15 text-sm text-white/90 font-medium">No bancario</span>
+              <span class="px-4 py-2 rounded-full bg-white/10 border border-white/15 text-sm text-white/90 font-medium">Cualquier destino</span>
+              <span class="px-4 py-2 rounded-full bg-white/10 border border-white/15 text-sm text-white/90 font-medium">Cuotas fijas</span>
+            </div>
+
+            <div class="grid grid-cols-2 gap-6 sm:gap-10">
+              <div>
+                <div class="text-4xl font-bold text-white mb-1">3.000<span class="text-[#A8C9A3]">+</span></div>
+                <div class="text-sm text-[#B8CEB5]/80">Préstamos aprobados</div>
+              </div>
+              <div>
+                <div class="text-4xl font-bold text-white mb-1">25<span class="text-[#A8C9A3]">+</span></div>
+                <div class="text-sm text-[#B8CEB5]/80">Años de experiencia</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Form card -->
+          <div id="consultar" class="bg-white rounded-3xl shadow-2xl p-8">
+            <h2 class="text-xl font-bold text-slate-900 mb-1">Consultá tu préstamo</h2>
+            <p class="text-sm text-slate-500 mb-6">Sin compromiso. Te respondemos en menos de 24 hs.</p>
+
+            <form x-data="loanForm()" @submit.prevent="handleSubmit" class="space-y-4">
+
+              <div>
+                <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wide mb-1.5">
+                  Monto a solicitar <span class="text-red-500" aria-hidden="true">*</span>
+                </label>
+                <select x-model="form.monto" required
+                  class="w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 bg-white focus:outline-none focus:ring-2 focus:ring-[#778873]/30 focus:border-[#778873] text-sm">
+                  <option value="">Seleccioná un rango</option>
+                  <option value="USD 6.000 – 15.000">USD 6.000 – 15.000</option>
+                  <option value="USD 15.000 – 50.000">USD 15.000 – 50.000</option>
+                  <option value="USD 50.000 o más">USD 50.000 o más</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wide mb-2">
+                  ¿Contás con garantía hipotecaria? <span class="text-red-500" aria-hidden="true">*</span>
+                </label>
+                <div class="space-y-1">
+                  <label class="flex items-center gap-3 cursor-pointer p-2.5 rounded-lg hover:bg-[#EDE9E3] transition-colors">
+                    <input type="radio" x-model="form.garantia" value="Propiedad propia" class="w-4 h-4 accent-[#778873]" required>
+                    <span class="text-sm text-slate-700">Propiedad propia</span>
+                  </label>
+                  <label class="flex items-center gap-3 cursor-pointer p-2.5 rounded-lg hover:bg-[#EDE9E3] transition-colors">
+                    <input type="radio" x-model="form.garantia" value="Propiedad de un familiar o tercero" class="w-4 h-4 accent-[#778873]">
+                    <span class="text-sm text-slate-700">Propiedad de un familiar o tercero</span>
+                  </label>
+                  <label class="flex items-center gap-3 cursor-pointer p-2.5 rounded-lg hover:bg-[#EDE9E3] transition-colors">
+                    <input type="radio" x-model="form.garantia" value="Planeo comprar una propiedad" class="w-4 h-4 accent-[#778873]">
+                    <span class="text-sm text-slate-700">Planeo comprar una propiedad</span>
+                  </label>
+                  <label class="flex items-center gap-3 cursor-pointer p-2.5 rounded-lg hover:bg-[#EDE9E3] transition-colors">
+                    <input type="radio" x-model="form.garantia" value="No tengo propiedad" class="w-4 h-4 accent-[#778873]">
+                    <span class="text-sm text-slate-700">No tengo propiedad</span>
+                  </label>
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wide mb-1.5">
+                  Localidad <span class="text-red-500" aria-hidden="true">*</span>
+                </label>
+                <select x-model="form.localidad" required
+                  class="w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 bg-white focus:outline-none focus:ring-2 focus:ring-[#778873]/30 focus:border-[#778873] text-sm">
+                  <option value="">Seleccioná tu zona</option>
+                  <option value="Capital Federal">Capital Federal</option>
+                  <option value="Zona Norte GBA">Zona Norte GBA</option>
+                  <option value="Zona Sur GBA">Zona Sur GBA</option>
+                  <option value="Zona Oeste GBA">Zona Oeste GBA</option>
+                  <option value="Otra">Otra</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wide mb-1.5">
+                  Nombre y Apellido <span class="text-red-500" aria-hidden="true">*</span>
+                </label>
+                <input type="text" x-model="form.nombre" required placeholder="Juan García"
+                  class="w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#778873]/30 focus:border-[#778873] text-sm placeholder-slate-400">
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wide mb-1.5">
+                  Teléfono / WhatsApp <span class="text-red-500" aria-hidden="true">*</span>
+                </label>
+                <input type="tel" x-model="form.telefono" required placeholder="+54 11 0000-0000"
+                  class="w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#778873]/30 focus:border-[#778873] text-sm placeholder-slate-400">
+              </div>
+
+              <button type="submit"
+                class="w-full py-4 rounded-xl bg-[#778873] text-white font-bold text-base hover:bg-[#5C6A57] active:scale-[0.98] transition-all flex items-center justify-center gap-2 mt-2">
+                Consultar / Calcular cuota
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+              </button>
+
+              <p class="text-xs text-slate-400 text-center">Tus datos son confidenciales. Sin costo ni compromiso.</p>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== BENEFICIOS ===== -->
+    <section id="beneficios" class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-14">
+          <span class="text-xs font-semibold uppercase tracking-widest text-[#778873]">Por qué elegirnos</span>
+          <h2 class="font-display mt-2 text-3xl lg:text-4xl font-bold text-slate-900">Ventajas del crédito privado</h2>
+          <p class="mt-4 text-slate-500 max-w-xl mx-auto">Una alternativa real al crédito bancario: más ágil, más flexible y con acompañamiento profesional de punta a punta.</p>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+          <div class="bg-white rounded-2xl p-8 shadow-card hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 border border-slate-100">
+            <div class="w-12 h-12 rounded-xl bg-[#778873]/10 flex items-center justify-center mb-6">
+              <svg class="w-6 h-6 text-[#778873]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 mb-3">Tasas más bajas</h3>
+            <p class="text-slate-500 text-sm leading-relaxed">Tasas inferiores a las bancarias. Sin comisiones ocultas ni gastos de apertura sorpresa.</p>
+          </div>
+
+          <div class="bg-white rounded-2xl p-8 shadow-card hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 border border-slate-100">
+            <div class="w-12 h-12 rounded-xl bg-emerald-50 flex items-center justify-center mb-6">
+              <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 mb-3">Mínimos requisitos</h3>
+            <p class="text-slate-500 text-sm leading-relaxed">Título limpio, capacidad de repago y tasación. Sin trámites burocráticos ni papelerío interminable.</p>
+          </div>
+
+          <div class="bg-white rounded-2xl p-8 shadow-card hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 border border-slate-100">
+            <div class="w-12 h-12 rounded-xl bg-amber-50 flex items-center justify-center mb-6">
+              <svg class="w-6 h-6 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 mb-3">Cualquier destino</h3>
+            <p class="text-slate-500 text-sm leading-relaxed">Deudas, inversiones, compras, refacciones, capital de trabajo o cualquier necesidad puntual.</p>
+          </div>
+
+          <div class="bg-white rounded-2xl p-8 shadow-card hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 border border-slate-100">
+            <div class="w-12 h-12 rounded-xl bg-violet-50 flex items-center justify-center mb-6">
+              <svg class="w-6 h-6 text-violet-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 mb-3">Rápida aprobación</h3>
+            <p class="text-slate-500 text-sm leading-relaxed">De la consulta al desembolso en 2 a 4 semanas. Sin las demoras del sistema bancario tradicional.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CÓMO FUNCIONA ===== -->
+    <section id="como-funciona" class="py-20 bg-[#F5F2ED]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-14">
+          <span class="text-xs font-semibold uppercase tracking-widest text-[#778873]">El proceso</span>
+          <h2 class="font-display mt-2 text-3xl lg:text-4xl font-bold text-slate-900">6 pasos hacia tu préstamo</h2>
+          <p class="mt-4 text-slate-500 max-w-xl mx-auto">Sin vueltas ni sorpresas. Así funciona cada operación de principio a fin.</p>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+          <div class="bg-white rounded-2xl p-8 border border-slate-100 shadow-card">
+            <div class="w-10 h-10 rounded-full bg-[#778873] text-white flex items-center justify-center font-black text-lg mb-5 shadow-md">1</div>
+            <h3 class="font-bold text-slate-900 mb-2">Consulta de viabilidad</h3>
+            <p class="text-sm text-slate-500 leading-relaxed">Evaluamos monto, destino, zona e inmueble disponible sin costo ni compromiso.</p>
+          </div>
+
+          <div class="bg-white rounded-2xl p-8 border border-slate-100 shadow-card">
+            <div class="w-10 h-10 rounded-full bg-[#778873] text-white flex items-center justify-center font-black text-lg mb-5 shadow-md">2</div>
+            <h3 class="font-bold text-slate-900 mb-2">Documentación</h3>
+            <p class="text-sm text-slate-500 leading-relaxed">Solicitamos título de propiedad, datos del solicitante y documentación básica de ingresos.</p>
+          </div>
+
+          <div class="bg-white rounded-2xl p-8 border border-slate-100 shadow-card">
+            <div class="w-10 h-10 rounded-full bg-[#778873] text-white flex items-center justify-center font-black text-lg mb-5 shadow-md">3</div>
+            <h3 class="font-bold text-slate-900 mb-2">Tasación del inmueble</h3>
+            <p class="text-sm text-slate-500 leading-relaxed">Un tasador matriculado determina el valor real de la propiedad a hipotecar.</p>
+          </div>
+
+          <div class="bg-white rounded-2xl p-8 border border-slate-100 shadow-card">
+            <div class="w-10 h-10 rounded-full bg-[#778873] text-white flex items-center justify-center font-black text-lg mb-5 shadow-md">4</div>
+            <h3 class="font-bold text-slate-900 mb-2">Análisis de la solicitud</h3>
+            <p class="text-sm text-slate-500 leading-relaxed">Revisamos la relación préstamo/valor y la capacidad de repago antes de formular una propuesta.</p>
+          </div>
+
+          <div class="bg-white rounded-2xl p-8 border border-slate-100 shadow-card">
+            <div class="w-10 h-10 rounded-full bg-[#778873] text-white flex items-center justify-center font-black text-lg mb-5 shadow-md">5</div>
+            <h3 class="font-bold text-slate-900 mb-2">Firma del contrato</h3>
+            <p class="text-sm text-slate-500 leading-relaxed">La operación se formaliza ante escribano con toda la documentación en orden.</p>
+          </div>
+
+          <div class="bg-white rounded-2xl p-8 border border-slate-100 shadow-card">
+            <div class="w-10 h-10 rounded-full bg-[#778873] text-white flex items-center justify-center font-black text-lg mb-5 shadow-md">6</div>
+            <h3 class="font-bold text-slate-900 mb-2">Seguimiento</h3>
+            <p class="text-sm text-slate-500 leading-relaxed">Acompañamos cada cuota y estamos disponibles durante toda la vigencia del préstamo.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== REQUISITOS ===== -->
+    <section id="requisitos" class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+
+          <!-- Left: checklist -->
+          <div>
+            <span class="text-xs font-semibold uppercase tracking-widest text-[#778873]">Requisitos</span>
+            <h2 class="font-display mt-2 text-3xl lg:text-4xl font-bold text-slate-900 mb-4">Simples y transparentes</h2>
+            <p class="text-slate-500 mb-10 leading-relaxed max-w-md">
+              No pedimos lo imposible. Solo lo necesario para proteger tanto al tomador como al inversor.
+            </p>
+            <ul class="space-y-6">
+              <li class="flex items-start gap-4">
+                <div class="w-7 h-7 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                </div>
+                <div>
+                  <p class="font-semibold text-slate-900">Título de propiedad limpio</p>
+                  <p class="text-sm text-slate-500 mt-1">Sin embargos, inhibiciones ni deudas registrales sobre el inmueble.</p>
+                </div>
+              </li>
+              <li class="flex items-start gap-4">
+                <div class="w-7 h-7 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                </div>
+                <div>
+                  <p class="font-semibold text-slate-900">Capacidad de repago demostrable</p>
+                  <p class="text-sm text-slate-500 mt-1">Ingresos regulares, actividad comercial, alquileres u otras fuentes verificables.</p>
+                </div>
+              </li>
+              <li class="flex items-start gap-4">
+                <div class="w-7 h-7 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                </div>
+                <div>
+                  <p class="font-semibold text-slate-900">Tasación del inmueble</p>
+                  <p class="text-sm text-slate-500 mt-1">Realizada por tasador matriculado para determinar el valor real de mercado.</p>
+                </div>
+              </li>
+              <li class="flex items-start gap-4">
+                <div class="w-7 h-7 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                </div>
+                <div>
+                  <p class="font-semibold text-slate-900">Propiedad en CABA o Zona Norte</p>
+                  <p class="text-sm text-slate-500 mt-1">Capital Federal y Zona Norte del Gran Buenos Aires. Consultá por otras zonas.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Right: Conditions panel -->
+          <div class="bg-gradient-to-br from-[#1A1F19] to-[#3A4A37] rounded-3xl p-8 text-white shadow-xl">
+            <h3 class="font-display font-bold text-2xl mb-7">Condiciones del préstamo</h3>
+            <div class="divide-y divide-white/15">
+              <div class="flex justify-between items-center py-4">
+                <span class="text-white/70 text-sm">Monto máximo estándar</span>
+                <span class="font-bold text-sm">Hasta el 35% del valor</span>
+              </div>
+              <div class="flex justify-between items-center py-4">
+                <span class="text-white/70 text-sm">Para compra de propiedad</span>
+                <span class="font-bold text-sm">Hasta el 45%</span>
+              </div>
+              <div class="flex justify-between items-center py-4">
+                <span class="text-white/70 text-sm">Tipo de cuota</span>
+                <span class="font-bold text-sm">Fijas mensuales</span>
+              </div>
+              <div class="flex justify-between items-center py-4">
+                <span class="text-white/70 text-sm">Destino del dinero</span>
+                <span class="font-bold text-sm">Libre</span>
+              </div>
+              <div class="flex justify-between items-center py-4">
+                <span class="text-white/70 text-sm">Modalidad</span>
+                <span class="font-bold text-sm">No bancaria, entre privados</span>
+              </div>
+            </div>
+            <a href="#consultar"
+               class="mt-8 w-full block text-center py-3.5 rounded-xl bg-white text-[#778873] font-bold hover:bg-[#F5F2ED] transition-colors">
+              Consultá mi caso →
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== INVERSORES ===== -->
+    <section id="inversores" class="py-20 bg-[#F5F2ED]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-14">
+          <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-100 text-amber-700 text-xs font-semibold uppercase tracking-widest">
+            Para Inversores
+          </span>
+          <h2 class="font-display mt-4 text-3xl lg:text-4xl font-bold text-slate-900">Invertí respaldado por una hipoteca</h2>
+          <p class="mt-4 text-slate-500 max-w-2xl mx-auto leading-relaxed">
+            Colocá tu capital en operaciones con garantía real sobre inmuebles en Capital Federal y Zona Norte. Documentación revisada, seguimiento profesional y total transparencia.
+          </p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-10 items-start">
+
+          <!-- Left: Benefit cards -->
+          <div class="space-y-4">
+            <div class="bg-white rounded-2xl p-6 shadow-card border border-slate-100 flex gap-5 items-start">
+              <div class="w-11 h-11 rounded-xl bg-[#778873]/10 flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-[#778873]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+              </div>
+              <div>
+                <h3 class="font-bold text-slate-900 mb-1">Garantía real sobre inmueble identificado</h3>
+                <p class="text-sm text-slate-500 leading-relaxed">Cada operación tiene como respaldo un inmueble tasado y documentado en CABA o Zona Norte.</p>
+              </div>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-card border border-slate-100 flex gap-5 items-start">
+              <div class="w-11 h-11 rounded-xl bg-emerald-50 flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+              </div>
+              <div>
+                <h3 class="font-bold text-slate-900 mb-1">Relación préstamo/valor prudente</h3>
+                <p class="text-sm text-slate-500 leading-relaxed">Financiamos hasta el 35–45% del valor del inmueble, generando un margen de seguridad sólido.</p>
+              </div>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-card border border-slate-100 flex gap-5 items-start">
+              <div class="w-11 h-11 rounded-xl bg-[#E8EDEA] flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-[#4A7A70]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+              </div>
+              <div>
+                <h3 class="font-bold text-slate-900 mb-1">Documentación revisada antes de cada operación</h3>
+                <p class="text-sm text-slate-500 leading-relaxed">Título, informe de dominio, tasación y capacidad de repago analizados por profesionales.</p>
+              </div>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-card border border-slate-100 flex gap-5 items-start">
+              <div class="w-11 h-11 rounded-xl bg-violet-50 flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-violet-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </div>
+              <div>
+                <h3 class="font-bold text-slate-900 mb-1">Seguimiento hasta el cierre total</h3>
+                <p class="text-sm text-slate-500 leading-relaxed">Rendición periódica, comunicación transparente e intervención ante cualquier incidencia.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Investor form -->
+          <div class="bg-white rounded-3xl p-8 shadow-card border border-slate-100">
+            <h3 class="font-bold text-xl text-slate-900 mb-1">¿Querés invertir con nosotros?</h3>
+            <p class="text-sm text-slate-500 mb-6">Completá tus datos y un asesor te explica cómo funciona sin compromiso.</p>
+            <form x-data="investorForm()" @submit.prevent="handleSubmit" class="space-y-4">
+              <div>
+                <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wide mb-1.5">Nombre y Apellido <span class="text-red-500" aria-hidden="true">*</span></label>
+                <input type="text" x-model="form.nombre" required placeholder="María González"
+                  class="w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#778873]/30 focus:border-[#778873] text-sm placeholder-slate-400">
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wide mb-1.5">Teléfono / WhatsApp <span class="text-red-500" aria-hidden="true">*</span></label>
+                <input type="tel" x-model="form.telefono" required placeholder="+54 11 0000-0000"
+                  class="w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#778873]/30 focus:border-[#778873] text-sm placeholder-slate-400">
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wide mb-1.5">Monto aproximado a invertir</label>
+                <select x-model="form.monto"
+                  class="w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 bg-white focus:outline-none focus:ring-2 focus:ring-[#778873]/30 focus:border-[#778873] text-sm">
+                  <option value="">Seleccioná un rango</option>
+                  <option value="USD 10.000 – 30.000">USD 10.000 – 30.000</option>
+                  <option value="USD 30.000 – 100.000">USD 30.000 – 100.000</option>
+                  <option value="USD 100.000 o más">USD 100.000 o más</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wide mb-1.5">Mensaje (opcional)</label>
+                <textarea x-model="form.mensaje" rows="3" placeholder="Contanos más sobre lo que buscás..."
+                  class="w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#778873]/30 focus:border-[#778873] text-sm placeholder-slate-400 resize-none"></textarea>
+              </div>
+              <button type="submit"
+                class="w-full py-4 rounded-xl bg-[#778873] text-white font-bold text-base hover:bg-[#5C6A57] active:scale-[0.98] transition-all">
+                Quiero invertir →
+              </button>
+              <div x-show="submitted" x-cloak x-transition
+                   class="p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-sm font-medium text-center">
+                ¡Gracias! Un asesor te contacta pronto.
+              </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TESTIMONIOS ===== -->
+    <section id="testimonios" class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-14">
+          <span class="text-xs font-semibold uppercase tracking-widest text-[#778873]">Testimonios</span>
+          <h2 class="font-display mt-2 text-3xl lg:text-4xl font-bold text-slate-900">Lo que dicen nuestros clientes</h2>
+        </div>
+        <div class="grid md:grid-cols-3 gap-6">
+
+          <div class="bg-[#F5F2ED] rounded-2xl p-8 border border-slate-100 relative overflow-hidden">
+            <div class="absolute top-4 right-6 text-7xl text-[#778873]/8 font-black leading-none select-none" aria-hidden="true">"</div>
+            <div class="flex gap-1 mb-4" aria-label="5 estrellas">
+              <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            </div>
+            <p class="text-slate-700 leading-relaxed mb-6 relative z-10">
+              "Necesitaba liquidez rápido para cancelar una deuda y el banco me pedía requisitos imposibles. En Hipotecas Buenos Aires lo resolvimos en tres semanas con mi departamento de Palermo como garantía."
+            </p>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-[#778873]/15 flex items-center justify-center font-bold text-[#778873] text-sm flex-shrink-0">MA</div>
+              <div>
+                <div class="font-semibold text-slate-900 text-sm">Marcela A.</div>
+                <div class="text-xs text-slate-500">Palermo, CABA</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-[#F5F2ED] rounded-2xl p-8 border border-slate-100 relative overflow-hidden">
+            <div class="absolute top-4 right-6 text-7xl text-[#778873]/8 font-black leading-none select-none" aria-hidden="true">"</div>
+            <div class="flex gap-1 mb-4" aria-label="5 estrellas">
+              <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            </div>
+            <p class="text-slate-700 leading-relaxed mb-6 relative z-10">
+              "Necesitaba capital de trabajo para mi ferretería en San Isidro y los bancos tardaban meses. Acá me dieron una respuesta en días y el proceso fue claro de principio a fin."
+            </p>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-[#778873]/15 flex items-center justify-center font-bold text-[#778873] text-sm flex-shrink-0">RS</div>
+              <div>
+                <div class="font-semibold text-slate-900 text-sm">Roberto S.</div>
+                <div class="text-xs text-slate-500">San Isidro, Zona Norte</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-[#F5F2ED] rounded-2xl p-8 border border-slate-100 relative overflow-hidden">
+            <div class="absolute top-4 right-6 text-7xl text-[#778873]/8 font-black leading-none select-none" aria-hidden="true">"</div>
+            <div class="flex gap-1 mb-4" aria-label="5 estrellas">
+              <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            </div>
+            <p class="text-slate-700 leading-relaxed mb-6 relative z-10">
+              "Quería ampliar mi departamento en Belgrano pero no calificaba en los bancos por tener ingresos variables. Acá analizaron mi situación real y encontramos una solución a medida."
+            </p>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-[#778873]/15 flex items-center justify-center font-bold text-[#778873] text-sm flex-shrink-0">DM</div>
+              <div>
+                <div class="font-semibold text-slate-900 text-sm">Daniela M.</div>
+                <div class="text-xs text-slate-500">Belgrano, CABA</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section id="faq" class="py-20 bg-[#F5F2ED]">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <span class="text-xs font-semibold uppercase tracking-widest text-[#778873]">Preguntas frecuentes</span>
+          <h2 class="font-display mt-2 text-3xl lg:text-4xl font-bold text-slate-900">Todo lo que necesitás saber</h2>
+        </div>
+
+        <div x-data="{ active: null }" class="space-y-3">
+
+          <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden">
+            <button @click="active = active === 0 ? null : 0"
+              class="w-full flex justify-between items-center px-6 py-5 text-left font-semibold text-slate-900 hover:bg-[#EDE9E3] transition-colors text-sm sm:text-base">
+              <span>¿El dinero puede usarse para cualquier destino?</span>
+              <svg :class="{'rotate-180': active === 0}" class="w-5 h-5 text-slate-400 transition-transform duration-200 flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div x-show="active === 0" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-1" x-transition:enter-end="opacity-100 translate-y-0" class="px-6 pb-5">
+              <p class="text-slate-600 leading-relaxed text-sm">Sí, el destino es libre: cancelación de deudas, inversión, compra de otra propiedad, capital de trabajo, refacción o cualquier otra necesidad. La única condición es que exista una propiedad apta como garantía y capacidad de repago.</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden">
+            <button @click="active = active === 1 ? null : 1"
+              class="w-full flex justify-between items-center px-6 py-5 text-left font-semibold text-slate-900 hover:bg-[#EDE9E3] transition-colors text-sm sm:text-base">
+              <span>¿Qué diferencia tiene con un banco?</span>
+              <svg :class="{'rotate-180': active === 1}" class="w-5 h-5 text-slate-400 transition-transform duration-200 flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div x-show="active === 1" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-1" x-transition:enter-end="opacity-100 translate-y-0" class="px-6 pb-5">
+              <p class="text-slate-600 leading-relaxed text-sm">Los bancos requieren meses de trámite, informes crediticios exhaustivos y muchas veces no aprueban a quienes tienen ingresos variables o informales. Nosotros analizamos cada caso de forma individual, con menor burocracia y tiempos mucho más cortos (2 a 4 semanas).</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden">
+            <button @click="active = active === 2 ? null : 2"
+              class="w-full flex justify-between items-center px-6 py-5 text-left font-semibold text-slate-900 hover:bg-[#EDE9E3] transition-colors text-sm sm:text-base">
+              <span>¿Qué zonas geográficas cubren?</span>
+              <svg :class="{'rotate-180': active === 2}" class="w-5 h-5 text-slate-400 transition-transform duration-200 flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div x-show="active === 2" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-1" x-transition:enter-end="opacity-100 translate-y-0" class="px-6 pb-5">
+              <p class="text-slate-600 leading-relaxed text-sm">Operamos principalmente en Capital Federal (CABA) y Zona Norte del Gran Buenos Aires (Tigre, San Isidro, Vicente López, San Martín y alrededores). Para consultas en otras zonas podés contactarnos y evaluamos caso a caso.</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden">
+            <button @click="active = active === 3 ? null : 3"
+              class="w-full flex justify-between items-center px-6 py-5 text-left font-semibold text-slate-900 hover:bg-[#EDE9E3] transition-colors text-sm sm:text-base">
+              <span>¿Cuánto puedo pedir en relación al valor de la propiedad?</span>
+              <svg :class="{'rotate-180': active === 3}" class="w-5 h-5 text-slate-400 transition-transform duration-200 flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div x-show="active === 3" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-1" x-transition:enter-end="opacity-100 translate-y-0" class="px-6 pb-5">
+              <p class="text-slate-600 leading-relaxed text-sm">Para operaciones estándar financiamos hasta el 35% del valor tasado de la propiedad. Para compra de inmueble con hipoteca podemos llegar hasta el 45%. Esto asegura un margen que protege tanto al tomador como al inversor.</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden">
+            <button @click="active = active === 4 ? null : 4"
+              class="w-full flex justify-between items-center px-6 py-5 text-left font-semibold text-slate-900 hover:bg-[#EDE9E3] transition-colors text-sm sm:text-base">
+              <span>¿Se puede usar la propiedad de un familiar como garantía?</span>
+              <svg :class="{'rotate-180': active === 4}" class="w-5 h-5 text-slate-400 transition-transform duration-200 flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div x-show="active === 4" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-1" x-transition:enter-end="opacity-100 translate-y-0" class="px-6 pb-5">
+              <p class="text-slate-600 leading-relaxed text-sm">Sí, es posible. El titular de la propiedad deberá firmar la escritura de hipoteca junto con el tomador del préstamo. Evaluamos cada caso para asegurar que la operación sea válida y segura para todas las partes.</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden">
+            <button @click="active = active === 5 ? null : 5"
+              class="w-full flex justify-between items-center px-6 py-5 text-left font-semibold text-slate-900 hover:bg-[#EDE9E3] transition-colors text-sm sm:text-base">
+              <span>¿Cuánto tiempo tarda el proceso completo?</span>
+              <svg :class="{'rotate-180': active === 5}" class="w-5 h-5 text-slate-400 transition-transform duration-200 flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div x-show="active === 5" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-1" x-transition:enter-end="opacity-100 translate-y-0" class="px-6 pb-5">
+              <p class="text-slate-600 leading-relaxed text-sm">Aproximadamente 2 a 4 semanas desde la consulta inicial hasta el desembolso. El tiempo puede variar según la complejidad de la operación, la velocidad de presentación de documentación y los tiempos del escribano interviniente.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTACTO ===== -->
+    <section id="contacto" class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-12 items-start">
+
+          <!-- Left -->
+          <div>
+            <span class="text-xs font-semibold uppercase tracking-widest text-[#778873]">Contacto</span>
+            <h2 class="font-display mt-2 text-3xl lg:text-4xl font-bold text-slate-900 mb-4">Hablemos de tu caso</h2>
+            <p class="text-slate-500 leading-relaxed mb-8 max-w-md">
+              Completá el formulario o contactanos directamente por WhatsApp. Sin turnos, sin esperas. Un asesor te responde en menos de 24 horas hábiles.
+            </p>
+
+            <a href="https://wa.me/549XXXXXXXXXX?text=Hola%2C%20consulto%20desde%20el%20sitio%20web%20sobre%20un%20pr%C3%A9stamo%20hipotecario."
+               target="_blank" rel="noopener"
+               class="flex items-center gap-4 p-5 rounded-2xl bg-[#25D366]/10 border border-[#25D366]/30 hover:bg-[#25D366]/15 transition-colors group mb-8">
+              <div class="w-12 h-12 rounded-xl bg-[#25D366] flex items-center justify-center flex-shrink-0">
+                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+              </div>
+              <div>
+                <div class="font-bold text-slate-900 group-hover:text-[#128C7E] transition-colors">Escribinos por WhatsApp</div>
+                <div class="text-sm text-slate-500">Respuesta rápida en horario comercial</div>
+              </div>
+              <svg class="w-5 h-5 text-slate-400 ml-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+            </a>
+
+            <div class="space-y-3">
+              <div class="flex items-center gap-3 text-sm text-slate-600">
+                <div class="w-8 h-8 rounded-lg bg-slate-100 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                </div>
+                Capital Federal y Zona Norte de Buenos Aires
+              </div>
+              <div class="flex items-center gap-3 text-sm text-slate-600">
+                <div class="w-8 h-8 rounded-lg bg-slate-100 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </div>
+                Lunes a viernes de 9:00 a 18:00 hs
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Contact form -->
+          <div class="bg-[#F5F2ED] rounded-3xl p-8 border border-slate-200">
+            <form x-data="contactForm()" @submit.prevent="handleSubmit" class="space-y-4">
+              <div class="grid sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wide mb-1.5">Nombre <span class="text-red-500" aria-hidden="true">*</span></label>
+                  <input type="text" x-model="form.nombre" required placeholder="Tu nombre"
+                    class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#778873]/30 focus:border-[#778873] text-sm placeholder-slate-400">
+                </div>
+                <div>
+                  <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wide mb-1.5">Teléfono <span class="text-red-500" aria-hidden="true">*</span></label>
+                  <input type="tel" x-model="form.telefono" required placeholder="+54 11 0000-0000"
+                    class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#778873]/30 focus:border-[#778873] text-sm placeholder-slate-400">
+                </div>
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wide mb-2">Soy… <span class="text-red-500" aria-hidden="true">*</span></label>
+                <div class="grid grid-cols-2 gap-3">
+                  <label class="flex items-center gap-2 cursor-pointer p-3 rounded-xl border-2 transition-all"
+                         :class="form.motivo === 'Tomador de préstamo' ? 'border-[#778873] bg-[#778873]/5' : 'border-slate-200 bg-white hover:border-slate-300'">
+                    <input type="radio" x-model="form.motivo" value="Tomador de préstamo" class="accent-[#778873]" required>
+                    <span class="text-sm font-medium text-slate-700">Busco préstamo</span>
+                  </label>
+                  <label class="flex items-center gap-2 cursor-pointer p-3 rounded-xl border-2 transition-all"
+                         :class="form.motivo === 'Inversor' ? 'border-[#778873] bg-[#778873]/5' : 'border-slate-200 bg-white hover:border-slate-300'">
+                    <input type="radio" x-model="form.motivo" value="Inversor" class="accent-[#778873]">
+                    <span class="text-sm font-medium text-slate-700">Soy inversor</span>
+                  </label>
+                </div>
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wide mb-1.5">Mensaje</label>
+                <textarea x-model="form.mensaje" rows="4" placeholder="Contanos brevemente lo que necesitás..."
+                  class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#778873]/30 focus:border-[#778873] text-sm placeholder-slate-400 resize-none"></textarea>
+              </div>
+              <button type="submit"
+                class="w-full py-4 rounded-xl bg-[#778873] text-white font-bold text-base hover:bg-[#5C6A57] active:scale-[0.98] transition-all">
+                Enviar mensaje →
+              </button>
+              <div x-show="submitted" x-cloak x-transition
+                   class="p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-sm font-medium text-center">
+                ¡Mensaje enviado! Te respondemos en menos de 24 hs hábiles.
+              </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="bg-[#1A1F19] text-slate-400 py-14">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-4 gap-8 mb-10">
+
+        <div class="md:col-span-2">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="h-10 px-3 rounded-xl bg-[#778873] flex items-center justify-center shadow-md">
+              <svg class="h-6 w-auto" viewBox="0 0 52 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <line x1="4" y1="3" x2="4" y2="33" stroke="white" stroke-width="4" stroke-linecap="round"/>
+                <line x1="4" y1="18" x2="26" y2="18" stroke="white" stroke-width="4" stroke-linecap="round"/>
+                <line x1="26" y1="3" x2="26" y2="33" stroke="white" stroke-width="4" stroke-linecap="round"/>
+                <path d="M26 3 C37 3 44 8 44 13 C44 18 37 18 26 18" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                <path d="M26 18 C39 18 47 24 47 28.5 C47 33 39 33 26 33" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              </svg>
+            </div>
+            <span class="text-white font-display font-bold text-lg">Hipotecas Buenos Aires</span>
+          </div>
+          <p class="text-sm leading-relaxed max-w-xs mb-5">
+            Préstamos con garantía hipotecaria entre privados. Capital para cualquier destino en CABA y Zona Norte, sin la burocracia bancaria.
+          </p>
+          <a href="https://wa.me/549XXXXXXXXXX" target="_blank" rel="noopener"
+             class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#25D366] text-white text-sm font-semibold hover:bg-[#1ebe5a] transition-colors">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            WhatsApp
+          </a>
+        </div>
+
+        <div>
+          <h4 class="text-white font-semibold mb-5 text-sm uppercase tracking-wide">Navegación</h4>
+          <ul class="space-y-3 text-sm">
+            <li><a href="#como-funciona" class="hover:text-white transition-colors">Cómo Funciona</a></li>
+            <li><a href="#requisitos"    class="hover:text-white transition-colors">Requisitos</a></li>
+            <li><a href="#inversores"    class="hover:text-white transition-colors">Para Inversores</a></li>
+            <li><a href="#faq"           class="hover:text-white transition-colors">Preguntas Frecuentes</a></li>
+            <li><a href="#contacto"      class="hover:text-white transition-colors">Contacto</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-white font-semibold mb-5 text-sm uppercase tracking-wide">Contacto</h4>
+          <div class="space-y-3 text-sm">
+            <p>Capital Federal y Zona Norte GBA</p>
+            <p>Lunes a Viernes · 9 a 18 hs</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="border-t border-slate-800 pt-8 flex flex-col lg:flex-row justify-between gap-4">
+        <p class="text-xs text-slate-500">© 2025 Hipotecas Buenos Aires. Todos los derechos reservados.</p>
+        <p class="text-xs text-slate-600 max-w-xl leading-relaxed">
+          La información de este sitio es de carácter orientativo. Las operaciones están sujetas a evaluación crediticia, tasación del inmueble y análisis legal. No constituye una oferta vinculante de crédito.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp button -->
+  <a href="https://wa.me/549XXXXXXXXXX?text=Hola%2C%20consulto%20desde%20el%20sitio%20web."
+     target="_blank" rel="noopener"
+     class="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-[#25D366] shadow-lg hover:shadow-xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all duration-200"
+     aria-label="Contactar por WhatsApp">
+    <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+  </a>
+
+  <script>
+    const WA_NUMBER = '549XXXXXXXXXX';
+
+    function buildWAUrl(text) {
+      return 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(text);
+    }
+
+    function loanForm() {
+      return {
+        form: { monto: '', garantia: '', localidad: '', nombre: '', telefono: '' },
+        handleSubmit() {
+          const msg = [
+            'Hola, consulto desde la web de Hipotecas Buenos Aires:',
+            '• Monto: '    + (this.form.monto     || '-'),
+            '• Garantía: ' + (this.form.garantia  || '-'),
+            '• Zona: '     + (this.form.localidad || '-'),
+            '• Nombre: '   + (this.form.nombre    || '-'),
+            '• Teléfono: ' + (this.form.telefono  || '-'),
+          ].join('\n');
+          window.open(buildWAUrl(msg), '_blank');
+        }
+      }
+    }
+
+    function investorForm() {
+      return {
+        submitted: false,
+        form: { nombre: '', telefono: '', monto: '', mensaje: '' },
+        handleSubmit() {
+          const parts = [
+            'Hola, me interesa invertir en hipotecas:',
+            '• Nombre: '   + (this.form.nombre   || '-'),
+            '• Teléfono: ' + (this.form.telefono || '-'),
+          ];
+          if (this.form.monto)   parts.push('• Monto a invertir: ' + this.form.monto);
+          if (this.form.mensaje) parts.push('• Mensaje: '          + this.form.mensaje);
+          window.open(buildWAUrl(parts.join('\n')), '_blank');
+          this.submitted = true;
+          this.form = { nombre: '', telefono: '', monto: '', mensaje: '' };
+        }
+      }
+    }
+
+    function contactForm() {
+      return {
+        submitted: false,
+        form: { nombre: '', telefono: '', motivo: '', mensaje: '' },
+        handleSubmit() {
+          const parts = [
+            'Hola, escribo desde el sitio web de Hipotecas Buenos Aires:',
+            '• Nombre: '   + (this.form.nombre   || '-'),
+            '• Teléfono: ' + (this.form.telefono || '-'),
+            '• Motivo: '   + (this.form.motivo   || '-'),
+          ];
+          if (this.form.mensaje) parts.push('• Mensaje: ' + this.form.mensaje);
+          window.open(buildWAUrl(parts.join('\n')), '_blank');
+          this.submitted = true;
+          this.form = { nombre: '', telefono: '', motivo: '', mensaje: '' };
+        }
+      }
+    }
+  </script>
+
+</body>
+</html>
