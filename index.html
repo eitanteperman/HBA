@@ -1018,7 +1018,7 @@
     /* ── Email sending ──
        With a Web3Forms access key the message is sent straight from the page to
        EMAIL (no email app needed). Without one, falls back to a mailto: link. */
-    const WEB3FORMS_KEY = '';
+    const WEB3FORMS_KEY = 'a9a64b89-4d6f-49d1-b574-5bc0046fc694';
     async function sendEmailLead(subject, text, source) {
       if (!WEB3FORMS_KEY) {
         trackLead(source, 'email');
