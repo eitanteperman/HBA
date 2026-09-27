@@ -981,6 +981,17 @@
       return 'mailto:' + EMAIL + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(text);
     }
 
+    /* ── Google Ads lead tracking ──
+       Paste the conversion label from Google Ads (the part after the slash in
+       send_to: 'AW-18464154836/XXXXXXX') to count leads as conversions. */
+    const ADS_ID           = 'AW-18464154836';
+    const ADS_LEAD_LABEL   = '';
+    function trackLead(source, channel) {
+      if (typeof gtag !== 'function') return;
+      gtag('event', 'generate_lead', { lead_source: source, method: channel });
+      if (ADS_LEAD_LABEL) gtag('event', 'conversion', { send_to: ADS_ID + '/' + ADS_LEAD_LABEL });
+    }
+
     /* ── Quick-contact modal (triggered from header & floating buttons) ── */
     function quickModal() {
       return {
@@ -1006,11 +1017,13 @@
         },
         sendWA() {
           if (!this.valid()) return;
+          trackLead('modal', 'whatsapp');
           window.open(buildWAUrl(this._msg()), '_blank');
           this.close();
         },
         sendEmail() {
           if (!this.valid()) return;
+          trackLead('modal', 'email');
           window.open(buildEmailUrl('Consulta - Hipotecas Buenos Aires', this._msg()), '_blank');
           this.close();
         }
@@ -1033,10 +1046,12 @@
         },
         submitWA(formEl) {
           if (!formEl.reportValidity()) return;
+          trackLead('hero', 'whatsapp');
           window.open(buildWAUrl(this._msg()), '_blank');
         },
         submitEmail(formEl) {
           if (!formEl.reportValidity()) return;
+          trackLead('hero', 'email');
           window.open(buildEmailUrl('Solicitud de préstamo - Hipotecas Buenos Aires', this._msg()), '_blank');
         }
       }
@@ -1059,12 +1074,14 @@
         },
         submitWA(formEl) {
           if (!formEl.reportValidity()) return;
+          trackLead('investor', 'whatsapp');
           window.open(buildWAUrl(this._msg()), '_blank');
           this.submitted = true;
           this.form = { nombre: '', telefono: '', monto: '', mensaje: '' };
         },
         submitEmail(formEl) {
           if (!formEl.reportValidity()) return;
+          trackLead('investor', 'email');
           window.open(buildEmailUrl('Consulta inversor - Hipotecas Buenos Aires', this._msg()), '_blank');
           this.submitted = true;
           this.form = { nombre: '', telefono: '', monto: '', mensaje: '' };
@@ -1089,12 +1106,14 @@
         },
         submitWA(formEl) {
           if (!formEl.reportValidity()) return;
+          trackLead('contact', 'whatsapp');
           window.open(buildWAUrl(this._msg()), '_blank');
           this.submitted = true;
           this.form = { nombre: '', telefono: '', motivo: '', mensaje: '' };
         },
         submitEmail(formEl) {
           if (!formEl.reportValidity()) return;
+          trackLead('contact', 'email');
           window.open(buildEmailUrl('Contacto - Hipotecas Buenos Aires', this._msg()), '_blank');
           this.submitted = true;
           this.form = { nombre: '', telefono: '', motivo: '', mensaje: '' };
