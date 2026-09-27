@@ -43,6 +43,13 @@
     "url": "https://hipotecasbuenosaires.com/",
     "telephone": "+5491178229764",
     "email": "infohipotecasbuenosaires@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "La Pampa 2540",
+      "postalCode": "C1428",
+      "addressLocality": "Ciudad Autónoma de Buenos Aires",
+      "addressCountry": "AR"
+    },
     "areaServed": [
       { "@type": "City", "name": "Ciudad Autónoma de Buenos Aires" },
       { "@type": "AdministrativeArea", "name": "Zona Norte del Gran Buenos Aires" }
@@ -868,9 +875,33 @@
         </div>
       </div>
 
-      <div class="border-t border-white/15 pt-8 flex flex-col lg:flex-row justify-between gap-4">
-        <p class="text-xs text-white/50">© 2025 Hipotecas Buenos Aires. Todos los derechos reservados.</p>
-        <p class="text-xs text-white/40 max-w-xl leading-relaxed">
+      <div class="border-t border-white/15 py-10 grid sm:grid-cols-3 gap-8">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-widest text-white/50 mb-2">Teléfono / WhatsApp</p>
+          <a href="https://wa.me/5491178229764" target="_blank" rel="noopener" class="text-white/90 hover:text-white hover:underline">+54 9 11 7822-9764</a>
+        </div>
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-widest text-white/50 mb-2">Email</p>
+          <a href="mailto:infohipotecasbuenosaires@gmail.com" class="text-white/90 hover:text-white hover:underline break-all">infohipotecasbuenosaires@gmail.com</a>
+        </div>
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-widest text-white/50 mb-2">Dirección</p>
+          <a href="https://www.google.com/maps/search/?api=1&query=La+Pampa+2540,+C1428,+Ciudad+Aut%C3%B3noma+de+Buenos+Aires,+Argentina" target="_blank" rel="noopener" class="text-white/90 hover:text-white hover:underline">La Pampa 2540 (CP 1428)<br>Ciudad Autónoma de Buenos Aires</a>
+        </div>
+      </div>
+
+      <div class="border-t border-white/15 pt-8 flex flex-col lg:flex-row justify-between gap-6">
+        <div>
+          <nav class="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-white/70 mb-3" aria-label="Legales">
+            <a href="legales.html#privacidad" class="hover:text-white hover:underline">Política de Privacidad</a>
+            <span class="text-white/30" aria-hidden="true">|</span>
+            <a href="legales.html#cookies" class="hover:text-white hover:underline">Cookies</a>
+            <span class="text-white/30" aria-hidden="true">|</span>
+            <a href="legales.html#terminos" class="hover:text-white hover:underline">Términos y Condiciones</a>
+          </nav>
+          <p class="text-xs text-white/50">© 2026 Hipotecas Buenos Aires. Todos los derechos reservados.</p>
+        </div>
+        <p class="text-xs text-white/40 max-w-xl leading-relaxed lg:mr-20">
           La información de este sitio es de carácter orientativo. Las operaciones están sujetas a evaluación crediticia, tasación del inmueble y análisis legal. No constituye una oferta vinculante de crédito.
         </p>
       </div>
